@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | PeopleFlow</title>
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js" defer></script>
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <div class="brand-mark">P</div>
+    <p class="eyebrow">PEOPLEFLOW · ADMIN PORTAL</p>
+    <h1>Welcome back<span class="accent">.</span></h1>
+    <p class="muted">Sign in to manage your people.</p>
+
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" name="username" autocomplete="username"
+             required maxlength="50" placeholder="Enter admin username">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password"
+             autocomplete="current-password" required
+             placeholder="Enter your password">
+
+      <button class="btn primary full" type="submit">Sign in <span>→</span></button>
+      <p id="loginMessage" class="form-message" role="status"></p>
+    </form>
+
+    <p class="login-foot"><span class="status-dot"></span> Secure administrator access</p>
+  </main>
+</body>
+</html>

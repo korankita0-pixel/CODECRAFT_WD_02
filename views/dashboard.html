@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeopleFlow | Employee Management</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/script.js" defer></script>
+</head>
+<body class="app-page">
+  <aside class="sidebar">
+    <a class="brand" href="/dashboard">
+      <span class="brand-mark small">P</span>
+      <span>people<span class="accent">flow</span></span>
+    </a>
+
+    <p class="nav-label">WORKSPACE</p>
+    <a class="nav-link active" href="/dashboard"><span>▦</span> Employees</a>
+
+    <div class="sidebar-bottom">
+      <div class="admin-chip">
+        <div class="avatar">A</div>
+        <div><strong id="adminName">Administrator</strong><small>Admin account</small></div>
+      </div>
+      <button id="logoutBtn" class="btn ghost full">↪ Sign out</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PEOPLE OPERATIONS</p>
+        <h1>Employee directory<span class="accent">.</span></h1>
+        <p class="muted">A thoughtful space to manage your growing team.</p>
+      </div>
+      <button id="addEmployeeBtn" class="btn primary">＋ Add employee</button>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span class="stat-icon purple">♙</span>
+        <p>Total employees</p>
+        <h2 id="totalEmployees">0</h2>
+        <small>People in your directory</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon green">⌘</span>
+        <p>Departments</p>
+        <h2 id="totalDepartments">0</h2>
+        <small>Unique departments</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon orange">✦</span>
+        <p>Recently added</p>
+        <h2 id="recentEmployees">0</h2>
+        <small>Added in the last 30 days</small>
+      </article>
+    </section>
+
+    <section class="directory-card">
+      <div class="directory-heading">
+        <div>
+          <h2>Your team</h2>
+          <p class="muted">View and manage employee information.</p>
+        </div>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search employees...">
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>EMPLOYEE</th>
+              <th>DEPARTMENT</th>
+              <th>POSITION</th>
+              <th>PHONE</th>
+              <th>SALARY</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="employeeTable">
+            <tr><td colspan="6" class="empty-state">Loading employees...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="tableMessage" class="muted table-message"></p>
+    </section>
+
+    <footer class="page-footer">PeopleFlow · Employee information, thoughtfully organized.</footer>
+  </main>
+
+  <div id="employeeModal" class="modal hidden" role="dialog"
+       aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="modal-card">
+      <div class="modal-heading">
+        <div>
+          <p class="eyebrow">EMPLOYEE DETAILS</p>
+          <h2 id="modalTitle">Add employee</h2>
+        </div>
+        <button id="closeModalBtn" class="icon-btn" aria-label="Close">×</button>
+      </div>
+
+      <form id="employeeForm">
+        <input id="employeeId" type="hidden">
+
+        <div class="form-grid">
+          <div class="field full-field">
+            <label for="employeeName">Full name</label>
+            <input id="employeeName" required minlength="2" maxlength="80"
+                   placeholder="e.g. Ananya Sharma">
+          </div>
+          <div class="field">
+            <label for="employeeEmail">Email address</label>
+            <input id="employeeEmail" type="email" required maxlength="254"
+                   placeholder="name@company.com">
+          </div>
+          <div class="field">
+            <label for="employeePhone">Phone number</label>
+            <input id="employeePhone" type="tel" required minlength="7"
+                   maxlength="20" placeholder="+91 98765 43210"
+                   pattern="[0-9+() -]{7,20}">
+          </div>
+          <div class="field">
+            <label for="employeeDepartment">Department</label>
+            <input id="employeeDepartment" required maxlength="80"
+                   placeholder="e.g. Engineering">
+          </div>
+          <div class="field">
+            <label for="employeePosition">Position</label>
+            <input id="employeePosition" required maxlength="80"
+                   placeholder="e.g. Software Developer">
+          </div>
+          <div class="field full-field">
+            <label for="employeeSalary">Annual salary</label>
+            <input id="employeeSalary" type="number" required min="0"
+                   step="0.01" placeholder="e.g. 600000">
+          </div>
+        </div>
+
+        <p id="employeeFormMessage" class="form-message" role="status"></p>
+        <div class="modal-actions">
+          <button type="button" id="cancelModalBtn" class="btn secondary">Cancel</button>
+          <button type="submit" id="saveEmployeeBtn" class="btn primary">Save employee</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
